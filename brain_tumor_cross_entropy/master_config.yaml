@@ -1,0 +1,80 @@
+# ==========================================
+# MASTER PIPELINE CONFIGURATION
+# ==========================================
+# This single configuration file controls the entire thesis pipeline.
+# You can pass this one file to every script in the pipeline:
+#
+#   python thesis_pipeline/scripts/01_dataloading.py --config master_config.yaml
+#   python thesis_pipeline/scripts/02_preprocessing.py --config master_config.yaml
+#   python thesis_pipeline/scripts/03_model_training.py --config master_config.yaml
+#   python thesis_pipeline/scripts/04_testing.py --config master_config.yaml
+#
+
+experiment_name: "brain_tumor_swin_pipeline"
+description: "Master thesis pipeline using Swin Transformer for Brain Tumor Classification"
+
+# ------------------------------------------
+# 1. DATA CONFIGURATION
+# ------------------------------------------
+data:
+  dataset_path: "./dataset"
+  
+  # Data splits (Ensure they add up to 1.0)
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  
+  # Image & Hardware settings
+  img_size: 224
+  batch_size: 16
+  num_workers: 0       # Set to 0 to prevent MPS deadlock on Mac!
+  seed: 42             # Random seed for perfectly reproducible data splits
+  
+  # Augmentation (Phase 2)
+  enable_augmentation: true
+  aug_rotation: 10     # Degrees to randomly rotate (keep low for medical images)
+  aug_brightness: 0.1
+  aug_contrast: 0.1
+
+# ------------------------------------------
+# 2. MODEL CONFIGURATION
+# ------------------------------------------
+model:
+  name: "swin_tiny_patch4_window7_224"
+  pretrained: true     # Use ImageNet weights as a starting point
+  num_classes: 4
+  dropout: 0.1
+
+# ------------------------------------------
+# 3. TRAINING CONFIGURATION
+# ------------------------------------------
+training:
+  epochs: 30
+  learning_rate: 0.00003
+  optimizer: "adamw"
+  scheduler: "cosine"
+  
+  # Early stopping
+  patience: 5          # Stop if Val Loss doesn't improve for 5 epochs
+  val_check_interval: 1
+
+# ------------------------------------------
+# 4. ROBUSTNESS CONFIGURATION
+# ------------------------------------------
+robustness:
+  corruptions:
+    - "gaussian_noise"
+    - "motion_blur"
+    - "elastic_deform"
+    - "intensity_shift"
+    - "spike_noise"
+  severity_levels: [1, 2, 3, 4, 5]
+
+# ------------------------------------------
+# 5. OUTPUT DIRECTORIES
+# ------------------------------------------
+# The pipeline will automatically generate folders inside this directory 
+# for raw_data/, preprocessing/, and model_results/.
+output_dir: "./thesis_pipeline/outputs"
+checkpoint_dir: "./thesis_pipeline/outputs/model_results/checkpoints"
+log_dir: "./thesis_pipeline/outputs/model_results/logs"

@@ -1,0 +1,36 @@
+2026-07-12 12:25:43,537 - __main__ - INFO - Loaded config from master_config.yaml
+2026-07-12 12:25:43,571 - __main__ - INFO - Using device: cuda
+2026-07-12 12:25:43,577 - __main__ - INFO - Loading dataset for testing...
+2026-07-12 12:25:43,605 - __main__ - INFO - Test size: 1600
+2026-07-12 12:25:43,605 - __main__ - INFO - Initializing empty model: swin_tiny_patch4_window7_224
+2026-07-12 12:25:44,002 - timm.models._builder - INFO - Loading pretrained weights from Hugging Face hub (timm/swin_tiny_patch4_window7_224.ms_in1k)
+2026-07-12 12:25:44,292 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/timm/swin_tiny_patch4_window7_224.ms_in1k/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-07-12 12:25:44,293 - timm.models._hub - INFO - [timm/swin_tiny_patch4_window7_224.ms_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-07-12 12:25:44,847 - timm.models._builder - INFO - Missing keys (head.fc.weight, head.fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2026-07-12 12:25:45,109 - __main__ - INFO - Loading trained weights from thesis_pipeline/outputs/model_results/checkpoints/best_model.pt...
+2026-07-12 12:25:45,454 - __main__ - INFO - Weights loaded successfully.
+2026-07-12 12:25:45,455 - __main__ - INFO - Running advanced evaluation on unseen test data...
+2026-07-12 12:26:00,183 - src.evaluation - INFO - Accuracy: 0.9500
+2026-07-12 12:26:00,197 - src.evaluation - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+      glioma       0.99      0.82      0.90       400
+  meningioma       0.88      0.98      0.93       400
+     notumor       0.95      1.00      0.98       400
+   pituitary       0.99      1.00      0.99       400
+
+    accuracy                           0.95      1600
+   macro avg       0.95      0.95      0.95      1600
+weighted avg       0.95      0.95      0.95      1600
+
+2026-07-12 12:26:00,208 - src.evaluation - INFO - ROC-AUC scores: {'glioma': 0.9665125, 'meningioma': 0.9860875000000001, 'notumor': 0.9991312499999999, 'pituitary': 0.9994479166666667}
+2026-07-12 12:26:00,623 - src.evaluation - INFO - Saved confusion matrix to thesis_pipeline/outputs/model_results/confusion_matrix.png
+2026-07-12 12:26:01,012 - src.evaluation - INFO - Saved classification report to thesis_pipeline/outputs/model_results/classification_report.png
+2026-07-12 12:26:03,066 - src.evaluation - INFO - Saved misclassified samples to thesis_pipeline/outputs/model_results
+2026-07-12 12:26:03,066 - src.evaluation - INFO - Generating PCA and t-SNE latent space clusters...
+2026-07-12 12:26:15,584 - src.evaluation - INFO - Saved calibration curve to thesis_pipeline/outputs/model_results/calibration_curve.png
+2026-07-12 12:26:15,584 - src.evaluation - INFO - Brier Scores: {'glioma': np.float64(0.045913758152083546), 'meningioma': np.float64(0.0367660698502631), 'notumor': np.float64(0.011521779724995369), 'pituitary': np.float64(0.003167936825307691)}
+2026-07-12 12:26:15,585 - src.evaluation - INFO - Generating Saliency Maps...
+2026-07-12 12:26:17,750 - __main__ - INFO - Testing complete! Analytics generated.
+2026-07-12 12:26:17,751 - __main__ - INFO - Check ./thesis_pipeline/outputs/model_results for all your final graphs!
