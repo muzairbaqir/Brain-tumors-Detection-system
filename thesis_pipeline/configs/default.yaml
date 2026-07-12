@@ -1,0 +1,76 @@
+# Brain Tumor Detection - Robustness Thesis Config
+experiment_name: "swin_tumor_robustness_study"
+description: "Robustness evaluation of Swin Transformer for brain tumor classification"
+mode: "train"  # train, eval_robustness, train_robust
+
+# ============= DATA CONFIG =============
+data:
+  # Path to Kaggle dataset (download from https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+  dataset_path: "/path/to/brain-tumor-mri-dataset"
+  
+  # Data splits
+  train_split: 0.70
+  val_split: 0.15
+  test_split: 0.15
+  
+  # Image preprocessing
+  img_size: 224
+  batch_size: 32
+  num_workers: 4
+  seed: 42
+  
+  # Augmentation (conservative for medical images!)
+  enable_augmentation: true
+  aug_rotation: 10  # degrees
+  aug_brightness: 0.1
+  aug_contrast: 0.1
+  aug_horizontal_flip: false  # Be careful with medical images
+
+# ============= MODEL CONFIG =============
+model:
+  name: "swin_tiny_patch4_window7_224"  # From timm
+  pretrained: true
+  num_classes: 4  # glioma, meningioma, pituitary, no_tumor
+  dropout: 0.1
+
+# ============= TRAINING CONFIG =============
+training:
+  epochs: 30
+  learning_rate: 3.0e-5
+  weight_decay: 1.0e-4
+  warmup_epochs: 2
+  
+  # Optimization
+  optimizer: "adamw"  # adamw, adam, sgd
+  scheduler: "cosine"  # cosine, linear, step
+  
+  # Loss
+  use_class_weights: true
+  use_label_smoothing: false
+  label_smoothing: 0.1
+  
+  # Early stopping
+  patience: 5
+  val_check_interval: 1
+  
+  # Checkpointing
+  save_best_only: true
+  save_last: true
+
+# ============= ROBUSTNESS CONFIG =============
+robustness:
+  # Types of corruptions to test (realistic for MRI)
+  corruptions:
+    - gaussian_noise      # Acquisition noise
+    - motion_blur         # Patient movement
+    - elastic_deform      # Spatial distortion
+    - intensity_shift     # Brightness variation
+    - spike_noise         # Salt-and-pepper artifacts
+  
+  # Severity levels (1-5, where 5 is most severe)
+  severity_levels: [1, 2, 3, 4, 5]
+
+# ============= PATHS =============
+output_dir: "./outputs"
+checkpoint_dir: "./checkpoints"
+log_dir: "./logs"

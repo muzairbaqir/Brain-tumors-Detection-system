@@ -1,0 +1,64 @@
+2026-07-12 13:13:23,526 - __main__ - INFO - Loaded config from master_config.yaml
+2026-07-12 13:13:23,558 - __main__ - INFO - Using device: cuda
+2026-07-12 13:13:23,560 - __main__ - INFO - Loading dataset...
+2026-07-12 13:13:23,589 - __main__ - INFO - Train: 3919, Val: 840
+2026-07-12 13:13:23,589 - __main__ - INFO - Creating model: swin_tiny_patch4_window7_224
+2026-07-12 13:13:24,013 - timm.models._builder - INFO - Loading pretrained weights from Hugging Face hub (timm/swin_tiny_patch4_window7_224.ms_in1k)
+2026-07-12 13:13:24,324 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/timm/swin_tiny_patch4_window7_224.ms_in1k/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-07-12 13:13:24,324 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-12 13:13:24,325 - timm.models._hub - INFO - [timm/swin_tiny_patch4_window7_224.ms_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-07-12 13:13:24,357 - timm.models._builder - INFO - Missing keys (head.fc.weight, head.fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2026-07-12 13:13:24,606 - __main__ - INFO - Model parameters: 27,522,430 (trainable: 27,522,430)
+2026-07-12 13:13:24,608 - __main__ - INFO - Starting training loop...
+2026-07-12 13:13:24,608 - src.training - INFO - Starting training for 30 epochs
+2026-07-12 13:14:44,046 - src.training - INFO - Epoch 1/30 | Train Loss: 0.1471, Acc: 0.8770 | Val Loss: 0.1324, Acc: 0.9036 | LR: 3.00e-05
+2026-07-12 13:14:44,654 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/best_model.pt
+2026-07-12 13:14:47,810 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_001.pt
+2026-07-12 13:16:11,914 - src.training - INFO - Epoch 2/30 | Train Loss: 0.0538, Acc: 0.9472 | Val Loss: 0.0574, Acc: 0.9595 | LR: 2.99e-05
+2026-07-12 13:16:12,844 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/best_model.pt
+2026-07-12 13:16:15,931 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_002.pt
+2026-07-12 13:17:40,891 - src.training - INFO - Epoch 3/30 | Train Loss: 0.0282, Acc: 0.9752 | Val Loss: 0.0412, Acc: 0.9762 | LR: 2.97e-05
+2026-07-12 13:17:42,003 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/best_model.pt
+2026-07-12 13:17:46,139 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_003.pt
+2026-07-12 13:19:11,454 - src.training - INFO - Epoch 4/30 | Train Loss: 0.0192, Acc: 0.9842 | Val Loss: 0.0470, Acc: 0.9750 | LR: 2.93e-05
+2026-07-12 13:19:12,123 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_004.pt
+2026-07-12 13:20:37,172 - src.training - INFO - Epoch 5/30 | Train Loss: 0.0132, Acc: 0.9893 | Val Loss: 0.0411, Acc: 0.9821 | LR: 2.87e-05
+2026-07-12 13:20:37,883 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/best_model.pt
+2026-07-12 13:20:40,760 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_005.pt
+2026-07-12 13:22:06,228 - src.training - INFO - Epoch 6/30 | Train Loss: 0.0103, Acc: 0.9900 | Val Loss: 0.0555, Acc: 0.9833 | LR: 2.80e-05
+2026-07-12 13:22:06,958 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/best_model.pt
+2026-07-12 13:22:08,376 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_006.pt
+2026-07-12 13:23:33,407 - src.training - INFO - Epoch 7/30 | Train Loss: 0.0115, Acc: 0.9913 | Val Loss: 0.0282, Acc: 0.9869 | LR: 2.71e-05
+2026-07-12 13:23:34,307 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/best_model.pt
+2026-07-12 13:23:37,188 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_007.pt
+2026-07-12 13:25:02,483 - src.training - INFO - Epoch 8/30 | Train Loss: 0.0071, Acc: 0.9954 | Val Loss: 0.0634, Acc: 0.9786 | LR: 2.61e-05
+2026-07-12 13:25:03,199 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_008.pt
+2026-07-12 13:26:28,469 - src.training - INFO - Epoch 9/30 | Train Loss: 0.0046, Acc: 0.9964 | Val Loss: 0.0464, Acc: 0.9810 | LR: 2.50e-05
+2026-07-12 13:26:29,159 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_009.pt
+2026-07-12 13:27:54,088 - src.training - INFO - Epoch 10/30 | Train Loss: 0.0097, Acc: 0.9936 | Val Loss: 0.0406, Acc: 0.9833 | LR: 2.38e-05
+2026-07-12 13:27:54,760 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_010.pt
+2026-07-12 13:29:19,365 - src.training - INFO - Epoch 11/30 | Train Loss: 0.0049, Acc: 0.9969 | Val Loss: 0.0359, Acc: 0.9869 | LR: 2.25e-05
+2026-07-12 13:29:20,052 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_011.pt
+2026-07-12 13:30:44,388 - src.training - INFO - Epoch 12/30 | Train Loss: 0.0022, Acc: 0.9969 | Val Loss: 0.0251, Acc: 0.9893 | LR: 2.11e-05
+2026-07-12 13:30:45,115 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/best_model.pt
+2026-07-12 13:30:48,045 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_012.pt
+2026-07-12 13:32:13,080 - src.training - INFO - Epoch 13/30 | Train Loss: 0.0040, Acc: 0.9972 | Val Loss: 0.0584, Acc: 0.9798 | LR: 1.96e-05
+2026-07-12 13:32:13,894 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_013.pt
+2026-07-12 13:33:38,860 - src.training - INFO - Epoch 14/30 | Train Loss: 0.0020, Acc: 0.9982 | Val Loss: 0.0295, Acc: 0.9917 | LR: 1.81e-05
+2026-07-12 13:33:39,755 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/best_model.pt
+2026-07-12 13:33:41,032 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_014.pt
+2026-07-12 13:35:06,075 - src.training - INFO - Epoch 15/30 | Train Loss: 0.0016, Acc: 0.9987 | Val Loss: 0.0698, Acc: 0.9845 | LR: 1.66e-05
+2026-07-12 13:35:06,950 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_015.pt
+2026-07-12 13:36:32,068 - src.training - INFO - Epoch 16/30 | Train Loss: 0.0044, Acc: 0.9980 | Val Loss: 0.0572, Acc: 0.9798 | LR: 1.50e-05
+2026-07-12 13:36:32,960 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_016.pt
+2026-07-12 13:37:58,279 - src.training - INFO - Epoch 17/30 | Train Loss: 0.0028, Acc: 0.9977 | Val Loss: 0.0354, Acc: 0.9905 | LR: 1.34e-05
+2026-07-12 13:37:59,005 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_017.pt
+2026-07-12 13:39:24,016 - src.training - INFO - Epoch 18/30 | Train Loss: 0.0016, Acc: 0.9985 | Val Loss: 0.0471, Acc: 0.9869 | LR: 1.19e-05
+2026-07-12 13:39:24,679 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_018.pt
+2026-07-12 13:40:49,994 - src.training - INFO - Epoch 19/30 | Train Loss: 0.0011, Acc: 0.9982 | Val Loss: 0.0540, Acc: 0.9869 | LR: 1.04e-05
+2026-07-12 13:40:50,658 - src.training - INFO - Saved checkpoint: thesis_pipeline/outputs/model_results/checkpoints/checkpoint_epoch_019.pt
+2026-07-12 13:40:50,659 - src.training - INFO - Early stopping at epoch 19 (patience exceeded)
+2026-07-12 13:40:50,660 - src.training - INFO - Training complete. Best val acc: 0.9917 at epoch 14
+2026-07-12 13:40:50,660 - __main__ - INFO - Training complete! Generating training history visualization...
+2026-07-12 13:40:51,376 - src.evaluation - INFO - Saved training history to thesis_pipeline/outputs/model_results/training_history.png
+2026-07-12 13:40:51,377 - __main__ - INFO - Saved training history plot. You can now run Step 4 (Testing).
