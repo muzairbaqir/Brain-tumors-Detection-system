@@ -106,8 +106,8 @@ def main(config_path: str = None):
     state_dict = checkpoint['model_state'] if 'model_state' in checkpoint else checkpoint
     model.load_state_dict(state_dict)
     
-    corruptions = config.raw_config.get('robustness', {}).get('corruptions', [])
-    severities = config.raw_config.get('robustness', {}).get('severity_levels', [1, 2, 3, 4, 5])
+    corruptions = getattr(config.robustness, 'corruptions', [])
+    severities = getattr(config.robustness, 'severity_levels', [1, 2, 3, 4, 5])
     
     if not corruptions:
         logger.error("No corruptions found in config file!")
